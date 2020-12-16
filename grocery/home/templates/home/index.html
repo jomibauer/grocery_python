@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'home/style.css' %}">
+{% endblock %}
+
+{% block title %} Home {% endblock %}
+
+{% block content %}
+	<h1 id="page-heading">{{ username }}'s grocery list</h1>
+	<div id="homepage">
+		<div id="shopping-list-form">
+			<form method="post" action="{% url 'home:remove_bought_item' %}">
+				{% csrf_token %}
+				<div id="shopping-list">
+					{% for item in lst %}
+						<div class="list-item">
+							<input type="checkbox" id="list-item-box"class="list-item-box" name="item" value="{{item}}">
+							<label for="list-item-box">{{item}}</label>
+						</div>
+					{% endfor %}
+				</div>
+
+				<input id="bought-button" type="submit" value="Bought selected items">
+			</form>
+		</div>
+
+		<div id="add-item-form">
+			<form method="post" action="{% url 'home:add_item_to_list' %}">
+				{% csrf_token %}
+				{{ form.items }}
+				<input type="submit" value="Submit" name="submit">
+				<p class="form-info">Add items by typing them into the box and submitting them.  Separate multiple items with a comma</p>
+
+			</form>
+		</div>
+
+		<div id="just-bought-list">
+			<p class="form-heading"> <strong>Recently Bought:</strong></p>
+			<hr/>
+				<ul>
+				{% for item in just_bought %}
+					<li class="just-bought-item">{{item}}</li>
+				{% endfor %}
+				</ul>
+		</div>
+	</div>
+
+{% endblock %}

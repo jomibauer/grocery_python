@@ -1,0 +1,55 @@
+/* for index.html */
+.add-recipe-form{
+	background: #EBE9E9;
+	border: 1px solid black;
+	margin: 5px;
+	padding: 5px;
+	width: 40%;
+}
+
+.recipe-form-row{
+	padding: 5px;
+}
+
+.recipe-schedule-table{
+	border: 3px solid black;
+}
+
+.date-cell{
+	border: 1px solid black;
+	width: 10em;
+	background: #DEE2D6
+}
+
+.empty-cell{
+	border: 1px solid black;
+	width: 10em;
+}
+
+.name-cell{
+	border: 1px solid black;
+	width: 10em;
+	background: #FCB07E80
+}
+
+/* for my_recipes */
+
+.recipe-table{
+	background: #EBE9E9;
+	border: 2px solid black;
+	padding: 15px;
+	width: 80%;
+}
+
+.recipe-column{
+	background: #FCB07E80;
+	border: 1px solid black;
+	margin: 5px;
+	width: 40%;
+}
+
+.column-head{
+	background: #DEE2D6;
+	margin: 10px;
+	width: 20%;
+}

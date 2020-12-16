@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+	<div class="form-page">
+		<h1 id="page-heading"> Please Login </h1>
+		{% for message in messages %}
+			<div class="alert alert-success">
+				<a class="close" href="#" data-dismiss="alert">×</a>
+
+					{{ message }}
+
+			</div>
+		{% endfor %}
+
+		<form class="login-reg-form" method="post" action="{% url 'login:validate_login' %}">
+			{% csrf_token %}
+			<table>
+				<div class="form-row">
+					<tr>
+						<td>{{ form.username.label_tag }}</td>
+						<td>{{ form.username }}</td>
+					</tr>
+				</div>
+				<div class="form-row">
+					<tr>
+						<td>{{ form.password.label_tag }}</td>
+						<td>{{ form.password }}</td>
+					</tr>
+				</div>
+			</table>
+
+			<input type="submit" name="login" value="Login">
+		</form>
+	</div>
+	<div id="register-link">
+		<a href="registration" class="form-info">New? Register here</a>
+	</div>
+
+</body>
+</html>

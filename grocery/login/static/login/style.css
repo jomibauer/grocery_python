@@ -1,0 +1,41 @@
+.form-page{
+	background: #F3F8F2;
+	padding: 1px 10px 10px 10px;
+	width: 75%;
+}
+
+.login-reg-form {
+	background: #EBE9E9;
+	padding: 10px;
+	margin: 7px;
+	border: 2px solid black;
+	width: 55%;
+
+}
+
+#register-link{
+	background: #FCB07E;
+	width: max-content;
+	border: 1px solid black;
+	padding: 1px;
+	margin: 7px;
+}
+
+#page-heading {
+	color: black;
+	background: #3581B880;
+	text-decoration: underline ;
+	margin: 7px;
+	padding: 7px;
+	width: max-content;
+	border: 2px solid #F3F8F2;
+
+}
+
+.form-row {
+	color: #DEE2D6;
+}
+
+.form-info {
+	font-size: 12px;
+}

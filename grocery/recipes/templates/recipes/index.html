@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block css %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'recipes/style.css' %}">
+{% endblock %}
+
+{% block title %} Home {% endblock %}
+
+
+{% block content %}
+<body>
+	{% for message in messages %}
+		<div class="alert alert-success">
+			<a class="close" href="#" data-dismiss="alert">×</a>
+
+				{{ message }}
+
+		</div>
+	{% endfor %}
+	<div class="add-recipe-form">
+		<form method="POST" action="{% url 'recipes:add_recipe' %}">
+			{% csrf_token %}
+			<table>
+				<tr>
+					<p><strong>Add a recipe</strong></p>
+				</tr>
+				<div class="recipe-form-row">
+					<tr>
+						<td>{{ form.recipe_name.label }}</td>
+						<td>{{ form.recipe_name }}</td>
+					</tr>
+					</div>
+					<div class="recipe-form-row">
+						<tr>
+							<td>{{ form.recipe_url.label }}</td>
+							<td>{{ form.recipe_url }}</td>
+						</tr>
+					</div>
+					<div class="recipe-form-row">
+						<tr>
+							<td>{{ form.recipe_index.label }}</td>
+							<td>{{ form.recipe_index }}</td>
+						</tr>
+					</div>
+				</table>
+				<input type="submit" value="Add recipe">
+			</form>
+	</div>
+	<table class="recipe-schedule-table">
+		<tr>
+			<th class="date-cell"><a href="/recipes/my_recipe/?rn=0">Monday</a> </th>
+			<th class="date-cell"><a href="/recipes/my_recipe/?rn=1">Tuesday</a></th>
+			<th class="date-cell"><a href="/recipes/my_recipe/?rn=2">Wednesday</a></th>
+			<th class="date-cell"><a href="/recipes/my_recipe/?rn=3">Thursday</a></th>
+			<th class="date-cell"><a href="/recipes/my_recipe/?rn=4">Friday</a></th>
+			<th class="date-cell"><a href="/recipes/my_recipe/?rn=5">Saturday</a></th>
+			<th class="date-cell"><a href="/recipes/my_recipe/?rn=6">Sunday</a></th>
+		</tr>
+		<tr>
+			{% for recipe in recipes %}
+				{% if recipe == 'empty' %}
+					<td class="empty-cell">{{ recipe }}</td>
+				{% else %}
+					<td class="name-cell">{{ recipe }}</td>
+				{% endif %}
+			{% endfor %}
+		</tr>
+	</table>
+</body>
+{% endblock %}

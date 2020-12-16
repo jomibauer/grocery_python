@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+{% block css %} {% endblock %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'grocery/style.css' %}">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Bookclub{% endblock %}</title>
+</head>
+<body class="page">
+	<div id="sidebar">
+		{% block sidebar %}
+			<div class="sidebar-item">
+				<p class="sidebar-text"><a href="/home/">Shopping list</a></p>
+			</div>
+			<div class="sidebar-item">
+				<p class="sidebar-text"><a href="/recipes/">My Recipes</a></p>
+			</div>
+			<div class="footer">
+				<a href="{% url 'logout' %}">Log out</a>
+			</div>
+		{% endblock %}
+	</div>
+
+	<div id="content">
+			{% block content %}{% endblock %}
+	</div>
+
+</body>
+
+</html>

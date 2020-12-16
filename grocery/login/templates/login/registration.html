@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'login/style.css' %}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register new user</title>
+</head>
+<body>
+	<div class="form-page">
+		<h1 id="page-heading"> New user registration</h1>
+		<form class="login-reg-form" method="POST" action="{%url 'login:register_user' %}">
+
+
+			{% csrf_token %}
+			<table>
+				<div class="form-row">
+					<tr>
+						<td>{{ form.username.label_tag }}</td>
+						<td>{{ form.username }}</td>
+					</tr>
+				</div>
+				<tr> <td><p class="form-info">150 characters or fewer. Letters, digits and @/./+/-/_ only.</p></td></tr>
+				<tr class="form-row">
+					<td>{{ form.password1.label_tag }}</td>
+					<td>{{ form.password1 }}</td>
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							<li class="form-info">Your password can’t be too similar to your other personal information.</li>
+							<li class="form-info">Your password must contain at least 8 characters.</li>
+							<li class="form-info">Your password can’t be a commonly used password.</li>
+							<li class="form-info">Your password can’t be entirely numeric.</li>
+						</ul>
+					</td>
+				</tr>
+				<tr class="form-row">
+					<td>{{ form.password2.label_tag }}</td>
+					<td>{{ form.password2 }}</td>
+				</tr>
+				<tr>
+					<td> <text class="form-info"> Enter the same password as before, for verification.</text></td>
+				</tr>
+			</table>
+
+			<input type="submit" name="registration" value="Submit">
+
+		</form>
+	</div>
+</body>
+</html>
